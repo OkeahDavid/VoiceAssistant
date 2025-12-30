@@ -77,27 +77,63 @@ VoiceAssistant/
 
 ## Usage
 
-### Command Examples
+### Voice Mode Commands
 
-The system can handle the following types of commands:
+When running in voice mode (`python main.py`), you can speak these commands:
 
-**Weather Queries:**
-- "What will the weather be like today in Marburg?"
-- "What will the weather be on Friday in Frankfurt?"
-- "Will it rain there on Saturday?"
+#### Weather Commands
 
-**Calendar Queries:**
+**Basic weather:**
+- "What's the weather today in Hamburg?"
+- "What's the weather in Marburg?"
+- "How's the weather in Frankfurt?"
+
+**Specific day:**
+- "What will the weather be on Friday in Berlin?"
+- "What's the weather tomorrow in Munich?"
+
+**Rain queries:**
+- "Will it rain in Hamburg on Saturday?"
+- "Is it going to rain tomorrow?"
+
+**Follow-up (using context):**
+- First: "What's the weather in Hamburg?"
+- Then: "What about in Frankfurt?" *(uses context)*
+
+#### Calendar Commands
+
+**Query appointments:**
 - "Where is my next appointment?"
 - "Show me my appointments"
+- "What's my next meeting?"
 
-**Calendar Creation:**
-- "Add an appointment titled Team Meeting for the 12th of January"
-- "Schedule a meeting called Project Review for tomorrow at 2 PM"
+**Create appointment:**
+- "Add an appointment titled Team Meeting for tomorrow at 2 PM"
+- "Schedule a meeting called Project Review for January 12th"
+- "Create an appointment for Friday at 3 PM"
 
-**Calendar Modification:**
-- "Delete the previously created appointment"
+**Update appointment:**
 - "Change the place for my appointment tomorrow to Room 15"
-- "Update the title of my next meeting"
+- "Update the location of my next meeting"
+
+**Delete appointment:**
+- "Delete the previously created appointment"
+- "Cancel my next appointment"
+
+**Exit:**
+- "Exit" / "Quit" / "Goodbye"
+
+**Note:** In voice mode, the system records for 5 seconds each time. Speak clearly and start speaking right away after you hear "Listening..."
+
+### Text Mode Commands
+
+In text mode (`python main.py --no-voice`), type the same commands as above. Examples:
+
+- `whats the weather today in hamburg`
+- `what about in frankfurt` (contextual)
+- `add an appointment titled Team Meeting for tomorrow at 2 PM`
+- `delete the previously created appointment`
+- `exit`
 
 ### Running Tests
 
@@ -270,22 +306,21 @@ This project was developed as part of the Natural Language Systems course at the
 
 ### Common Issues
 
-1. **Audio device errors:**
-   - Ensure microphone permissions are granted
-   - Check audio device configuration with `python -m sounddevice`
+1. **Audio errors in voice mode:**
+   - Use text mode: `python main.py --no-voice`
+   - Or install audio libraries: `sudo apt-get install espeak espeak-ng` (Linux)
 
 2. **Model download issues:**
    - Whisper models download automatically on first use
-   - Requires stable internet connection for initial setup
+   - Requires internet connection for initial setup
 
-3. **Docker audio issues:**
-   - Docker containers don't support audio I/O by default
-   - Use `--no-voice` flag for text-based interaction in Docker
-
-4. **API connection errors:**
+3. **API connection errors:**
    - Verify internet connection
    - Check API endpoints are accessible
-   - Review any rate limiting or access restrictions
+
+4. **Location not recognized:**
+   - City names are case-insensitive ("hamburg" works)
+   - Include "in [city]" in your query
 
 ## Future Improvements
 

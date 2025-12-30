@@ -9,6 +9,8 @@ RUN apt-get update && apt-get install -y \
     python3-pyaudio \
     ffmpeg \
     git \
+    gcc \
+    build-essential \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements

@@ -4,12 +4,12 @@ A local voice assistant capable of providing weather information and managing ca
 
 ## Features
 
-- 🎤 **Automatic Speech Recognition (ASR)** - Converts spoken English to text using OpenAI Whisper
-- 🔊 **Text-to-Speech (TTS)** - Converts text to spoken English 
-- 🌤️ **Weather Information** - Queries weather API for forecasts
-- 📅 **Calendar Management** - Full CRUD operations for calendar entries
-- 💬 **Conversation Tracking** - Maintains dialogue context and history
-- 🔒 **Local Processing** - All AI processing happens locally (no cloud dependencies)
+- **Automatic Speech Recognition (ASR)** - Converts spoken English to text using OpenAI Whisper
+- **Text-to-Speech (TTS)** - Converts text to spoken English 
+- **Weather Information** - Queries weather API for forecasts
+- **Calendar Management** - Full CRUD operations for calendar entries
+- **Conversation Tracking** - Maintains dialogue context and history
+- **Local Processing** - All AI processing happens locally (no cloud dependencies)
 
 ## Project Structure
 
@@ -37,9 +37,6 @@ VoiceAssistant/
 ### Local Setup
 
 1. **Clone the repository:**
-   ```bash
-   cd /home/okeahda/projects/VoiceAssistant
-   ```
 
 2. **Install Python dependencies:**
    ```bash
@@ -58,22 +55,26 @@ VoiceAssistant/
 
 ### Docker Setup
 
-1. **Build and run with Docker:**
-   ```bash
-   chmod +x run_docker.sh
-   ./run_docker.sh
-   ```
+**For detailed Docker documentation, see [DOCKER.md](DOCKER.md)**
 
-   Or manually:
+Quick start:
+
+1. **Build the image:**
    ```bash
    docker build -t voice-assistant .
+   ```
+
+2. **Run the container:**
+   ```bash
    docker run -it --rm voice-assistant
    ```
 
-2. **Using Docker Compose:**
+3. **Using Docker Compose:**
    ```bash
    docker-compose up --build
    ```
+
+**Note**: Docker container runs in text mode only (no voice support in containers).
 
 ## Usage
 
@@ -255,35 +256,6 @@ CALENDAR_API_URL=https://api.responsible-nlp.net/calendar.php
 SAMPLE_RATE=16000
 CHANNELS=1
 ```
-
-## Milestones
-
-- ✅ **MS1 (14.11.2025):** Working code for ASR and TTS
-- ✅ **MS2 (28.11.2025):** Working code to connect to weather and calendar API
-- ✅ **MS3 (12.12.2025):** Working voice assistant
-- ✅ **MS4 (30.01.2025):** Final Docker container and evaluation report
-
-## Requirements Met
-
-✅ System takes spoken English as input and produces spoken English as output  
-✅ System keeps track of conversation history  
-✅ System does not connect to external resources except weather and calendar APIs  
-✅ User can request all information from weather API through spoken language  
-✅ User can perform all CRUD operations on calendar API  
-✅ User can refer to previous turns in conversation  
-
-## Evaluation
-
-The system can be evaluated on:
-
-1. **Intent Recognition Accuracy:** How well the NLU identifies user intents
-2. **Entity Extraction Accuracy:** How well dates, locations, and other entities are extracted
-3. **Context Resolution:** How well the system resolves references to previous conversation
-4. **API Integration:** Success rate of weather and calendar API calls
-5. **End-to-End Success:** Complete task completion rate for required commands
-6. **ASR Accuracy:** Word Error Rate (WER) for speech recognition
-7. **Response Quality:** Relevance and completeness of system responses
-
 ## Dependencies
 
 See [requirements.txt](requirements.txt) for complete list:
@@ -297,37 +269,3 @@ See [requirements.txt](requirements.txt) for complete list:
 ## License
 
 See [LICENSE](LICENSE) file.
-
-## Team
-
-This project was developed as part of the Natural Language Systems course at the University of Marburg.
-
-## Troubleshooting
-
-### Common Issues
-
-1. **Audio errors in voice mode:**
-   - Use text mode: `python main.py --no-voice`
-   - Or install audio libraries: `sudo apt-get install espeak espeak-ng` (Linux)
-
-2. **Model download issues:**
-   - Whisper models download automatically on first use
-   - Requires internet connection for initial setup
-
-3. **API connection errors:**
-   - Verify internet connection
-   - Check API endpoints are accessible
-
-4. **Location not recognized:**
-   - City names are case-insensitive ("hamburg" works)
-   - Include "in [city]" in your query
-
-## Future Improvements
-
-- Add support for multiple languages
-- Implement more sophisticated NLU with machine learning
-- Add user authentication for personalized calendars
-- Support for recurring appointments
-- Voice activity detection for better UX
-- Improved error handling and recovery
-- Performance optimizations for faster response times

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  voice-assistant:
+    build: .
+    container_name: voice_assistant
+    stdin_open: true
+    tty: true
+    environment:
+      - WEATHER_API_URL=https://api.responsible-nlp.net/weather.php
+      - CALENDAR_API_URL=https://api.responsible-nlp.net/calendar.php
+    volumes:
+      - ./logs:/app/logs
+    command: python main.py --no-voice

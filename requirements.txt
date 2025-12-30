@@ -1,0 +1,23 @@
+# ASR (Automatic Speech Recognition)
+openai-whisper
+torch
+torchaudio
+sounddevice
+numpy
+
+# TTS (Text-to-Speech)
+pyttsx3
+
+# API requests
+requests
+
+# NLU and dialogue management
+python-dateutil
+regex
+
+# Audio processing
+pyaudio
+scipy
+
+# General
+python-dotenv
